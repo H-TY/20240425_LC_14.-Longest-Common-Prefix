@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+
+        // const text2 = '外賣 咖哩拌飯 咖哩烏冬'
+
+        // const includesCurry1 = text2.matchAll(/咖哩/g)
+        // console.log(includesCurry1)
+
+        // ● 測資1
+        const strs = ["flower", "flow", "flight"]
+        // Output: "fl"
+
+        // ● 測資2
+        const strs1 = ["dog", "racecar", "car"]
+        // Output: ""
+
+
+        // for (let i of strs) {
+
+        //     console.log(i)
+        //     console.log(strs[0])
+        //     console.log(strs[0][0])
+        // }
+
+        // if (strs[0].includes[i] === strs[i].includes[i + 1]) {
+        //     // let j = []
+        //     // j.push(strs[i + 1])
+        //     // console.log(j)
+        // }
+
+
+        /**
+         * @param {string[]} strs
+         * @return {string}
+         */
+        var longestCommonPrefix = function (strs) {
+            for (let i = 0; i < strs[0].length; i++) {
+                for (let j = 0; j < strs[1].length; j++) {
+                    if (strs[0][i] === strs[1][j]) {
+                        let k = strs[0][i]
+                        console.log(k)
+                        return k
+                    } else {
+                        continue
+                    }
+                }
+            }
+        };
+
+    </script>
+
+
+</body>
+
+</html>
