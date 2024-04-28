@@ -12,32 +12,50 @@
     <script>
 
 
-        // const text2 = '外賣 咖哩拌飯 咖哩烏冬'
-
-        // const includesCurry1 = text2.matchAll(/咖哩/g)
-        // console.log(includesCurry1)
-
         // ● 測資1
         const strs = ["flower", "flow", "flight"]
         // Output: "fl"
 
         // ● 測資2
-        const strs1 = ["dog", "racecar", "car"]
+        // const strs = ["dog", "racecar", "car"]
         // Output: ""
 
 
-        // for (let i of strs) {
+        // 自己寫的Code
+        // 先重新排序陣列，由文字短至長，避免後續因字元長度過長，而取值取到 undefined 狀況
+        strs.sort(function (a, b) {
+            return a.length - b.length
+        })
+        console.log(strs)
 
-        //     console.log(i)
-        //     console.log(strs[0])
-        //     console.log(strs[0][0])
-        // }
 
-        // if (strs[0].includes[i] === strs[i].includes[i + 1]) {
-        //     // let j = []
-        //     // j.push(strs[i + 1])
-        //     // console.log(j)
-        // }
+        let t = []
+        // 此空陣列作為紀錄共同重複的值
+
+        for (let i in strs) {
+            for (let j = 0; j < strs[0].length; j++) {
+                if (i === "0") {
+                    // 第一個值(索引0)即為用來當判斷的基準值，故直接跳過
+                    continue
+                } else if (strs[0][j] === strs[i][j]) {
+                    // 依序判斷於相同索引位置是否有相同的字母，當有一樣時，新增至新的陣列(t)
+                    // console.log([i])
+                    // console.log([j])
+                    t.push(strs[0][j])
+                    // console.log(t)
+                }
+            }
+        }
+        // console.log(t)
+        // 用 .filter 找出重複的值
+        let k = t.filter((value, index) => {
+            return t.indexOf(value) !== index
+        })
+        console.log(k)
+        // 去掉陣列的 , 
+        console.log(k.join(""))
+        // return (`"${k.join("")}"`)
+
 
 
         /**
@@ -45,18 +63,60 @@
          * @return {string}
          */
         var longestCommonPrefix = function (strs) {
-            for (let i = 0; i < strs[0].length; i++) {
-                for (let j = 0; j < strs[1].length; j++) {
-                    if (strs[0][i] === strs[1][j]) {
-                        let k = strs[0][i]
-                        console.log(k)
-                        return k
-                    } else {
+
+            strs.sort(function (a, b) {
+                return a.length - b.length
+            })
+            console.log(strs)
+
+
+            let t = []
+            // 此空陣列作為紀錄共同重複的值
+
+            for (let i in strs) {
+                for (let j = 0; j < strs[0].length; j++) {
+                    if (i === "0") {
+                        // 第一個值(索引0)即為用來當判斷的基準值，故直接跳過
                         continue
+                    } else if (strs[0][j] === strs[i][j]) {
+                        // 依序判斷於相同索引位置是否有相同的字母，當有一樣時，新增至新的陣列(t)
+                        // console.log([i])
+                        // console.log([j])
+                        t.push(strs[0][j])
+                        // console.log(t)
                     }
                 }
             }
+            // console.log(t)
+            // 用 .filter 找出重複的值
+            let k = t.filter((value, index) => {
+                return t.indexOf(value) !== index
+            })
+            console.log(k)
+            // 去掉陣列的 , 
+            console.log(k.join(""))
+            return (`"${k.join("")}"`)
+
+
+
+            // // ● ChpGPT 修改後的 code
+            // if (strs.length === 0) return ""; // 如果字串陣列為空，則返回空字串
+
+            // let prefix = ""; // 初始化共同前綴為空字串
+            // for (let i = 0; i < strs[0].length; i++) { // 從第一個字串的第一個字母開始比較
+            //     let char = strs[0][i]; // 取得當前位置的字母
+            //     for (let j = 1; j < strs.length; j++) { // 遍歷其他字串
+            //         if (i >= strs[j].length || strs[j][i] !== char) {
+            //             // 如果已經超出某個字串的長度，或者當前位置的字母和第一個字串中的字母不同
+            //             return prefix; // 返回當前的共同前綴
+            //         }
+            //     }
+            //     prefix += char; // 如果當前位置的字母在所有字串中都相同，則將其加入共同前綴中
+            // }
+            // return prefix; // 返回最終的共同前綴
+
         };
+
 
     </script>
 
