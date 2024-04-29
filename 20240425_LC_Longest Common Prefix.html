@@ -20,41 +20,72 @@
         // const strs = ["dog", "racecar", "car"]
         // Output: ""
 
+        // ● 測資3
+        // const strs = ["a"]
+        // Output: "a"
 
-        // 自己寫的Code
+        // // 自己寫的Code_A
+        // // 先重新排序陣列，由文字短至長，避免後續因字元長度過長，而取值取到 undefined 狀況
+        // strs.sort(function (a, b) {
+        //     return a.length - b.length
+        // })
+        // console.log(strs)
+
+
+        // let t = []
+        // // 此空陣列作為紀錄共同重複的值
+
+        // for (let i in strs) {
+        //     for (let j = 0; j < strs[0].length; j++) {
+        //         if (i === "0") {
+        //             // 第一個值(索引0)即為用來當判斷的基準值，故直接跳過
+        //             continue
+        //         } else if (strs[0][j] === strs[i][j]) {
+        //             // 依序判斷於相同索引位置是否有相同的字母，當有一樣時，新增至新的陣列(t)
+        //             // console.log([i])
+        //             // console.log([j])
+        //             t.push(strs[0][j])
+        //             // console.log(t)
+        //         }
+        //     }
+        // }
+        // // console.log(t)
+        // // 用 .filter 找出重複的值
+        // let k = t.filter((value, index) => {
+        //     return t.indexOf(value) !== index
+        // })
+        // console.log(k)
+        // // 去掉陣列的 , 
+        // console.log(k.join(""))
+        // // return (`"${k.join("")}"`)
+
+
+        // 自己寫的Code_B
         // 先重新排序陣列，由文字短至長，避免後續因字元長度過長，而取值取到 undefined 狀況
         strs.sort(function (a, b) {
             return a.length - b.length
         })
-        console.log(strs)
+        // console.log(strs)
 
 
-        let t = []
+        let t = ""
         // 此空陣列作為紀錄共同重複的值
 
         for (let i in strs) {
             for (let j = 0; j < strs[0].length; j++) {
-                if (i === "0") {
-                    // 第一個值(索引0)即為用來當判斷的基準值，故直接跳過
-                    continue
-                } else if (strs[0][j] === strs[i][j]) {
-                    // 依序判斷於相同索引位置是否有相同的字母，當有一樣時，新增至新的陣列(t)
+                if (strs[0][j] === strs[i][j]) {
+                    // 依序判斷於相同索引位置是否有相同的字母，當有一樣時，設定要取至第幾索引
+
                     // console.log([i])
                     // console.log([j])
-                    t.push(strs[0][j])
-                    // console.log(t)
+                    // 用 .substring 取值，因結尾的索引不包含在內，故需 +1
+                    console.log(strs[0].substring(0, j + 1))
+                    t += strs[0].substring(0, j + 1)
                 }
             }
         }
-        // console.log(t)
-        // 用 .filter 找出重複的值
-        let k = t.filter((value, index) => {
-            return t.indexOf(value) !== index
-        })
-        console.log(k)
-        // 去掉陣列的 , 
-        console.log(k.join(""))
-        // return (`"${k.join("")}"`)
+        console.log(t)
+
 
 
 
