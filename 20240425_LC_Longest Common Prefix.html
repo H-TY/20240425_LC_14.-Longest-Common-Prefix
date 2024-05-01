@@ -17,7 +17,7 @@
         // Output: "fl"
 
         // ● 測資2
-        const strs = ["dog", "racecar", "car"]
+        // const strs = ["dog", "racecar", "car"]
         // Output: ""
 
         // ● 測資3
@@ -35,6 +35,13 @@
         // ● 測資6
         // const strs = ["abab", "aba", "abc"]
         // Output: "ab"
+
+        // ● 測資7
+        const strs = ["reflower", "flow", "flight"]
+        // Output: ""
+
+
+
 
         // // 自己寫的Code_A
         // // 先重新排序陣列，由文字短至長，避免後續因字元長度過長，而取值取到 undefined 狀況
@@ -135,32 +142,43 @@
         // 共同前餟字母
         let t = ""
 
+        if (strs.length < 2) {
+            // 判斷陣列長度只有1的時候 <ex> strs = ["a"]
+            console.log("外判斷有執行")
+            t = strs[0]
+        }
+
         for (let i in strs) {
             for (let j = 0; j < strs[0].length; j++) {
-                if (strs[0][j] === strs[i][j] && i !== 0) {
-                    // console.log(strs[i][j])
+                if (i == 0) {
+                    console.log("判斷0有執行")
+                    continue
+                } else if (strs[0][j] === strs[i][j]) {
                     // 依序判斷於相同索引位置是否有相同的字母，當有一樣時，設定要取至第幾索引
                     // 用 .substring 取值，因結尾的索引不包含在內，故需 +1
-                    // console.log(strs[0].substring(0, j + 1))
+                    console.log("判斷1有執行")
                     t = strs[0].substring(0, j + 1)
+                    console.log(strs[0].substring(0, j + 1))
                 } else {
+                    console.log("判斷2有執行")
                     // 若不是相同字母，即刪除對照用strs[0]當下的索引位置的字母
                     // 需先將值改成陣列
                     strs[0] = strs[0].split('')
                     console.log(strs[0])
 
-                    // 再刪除當前索引位置的字母
-                    strs[0].splice(j, 1)
+                    // 刪除當前索引位置包含之後的字母
+                    console.log('j', j)
+                    console.log('strs[0].length', strs[0].length)
+                    strs[0].splice(j, strs[0].length)
                     console.log(strs[0])
 
                     // 最後 賦值 修改原對照用strs[0]的值，用 .join('') 將陣列改回值後賦值
-                    strs[0] = strs[0].join('')
+                    t = strs[0] = strs[0].join('')
                     console.log(strs[0])
                 }
             }
         }
         console.log(t)
-        // return t
 
 
 
@@ -176,19 +194,46 @@
             })
             // console.log(strs)
 
+            // 共同前餟字母
             let t = ""
 
-            for (let j = 0; j < strs[0].length; j++) {
-                if (strs[0][j] === strs[strs.length - 1][j]) {
-                    // 依序判斷於相同索引位置是否有相同的字母，當有一樣時，設定要取至第幾索引
-                    // console.log([i])
-                    // console.log([j])
-                    // 用 .substring 取值，因結尾的索引不包含在內，故需 +1
-                    // console.log(strs[0].substring(0, j + 1))
-                    t = strs[0].substring(0, j + 1)
+            if (strs.length < 2) {
+                // 判斷陣列長度只有1的時候 <ex> strs = ["a"]
+                // console.log("外判斷有執行")
+                t = strs[0]
+            }
+
+            for (let i in strs) {
+                for (let j = 0; j < strs[0].length; j++) {
+                    if (i == 0) {
+                        // console.log("判斷0有執行")
+                        continue
+                    } else if (strs[0][j] === strs[i][j]) {
+                        // 依序判斷於相同索引位置是否有相同的字母，當有一樣時，設定要取至第幾索引
+                        // 用 .substring 取值，因結尾的索引不包含在內，故需 +1
+                        // console.log("判斷1有執行")
+                        t = strs[0].substring(0, j + 1)
+                        // console.log(strs[0].substring(0, j + 1))
+                    } else {
+                        // console.log("判斷2有執行")
+                        // 若不是相同字母，即刪除對照用strs[0]當下的索引位置的字母
+                        // 需先將值改成陣列
+                        strs[0] = strs[0].split('')
+                        // console.log(strs[0])
+
+                        // 刪除當前索引位置包含之後的字母
+                        // console.log('j', j)
+                        // console.log('strs[0].length', strs[0].length)
+                        strs[0].splice(j, strs[0].length)
+                        // console.log(strs[0])
+
+                        // 最後 賦值 修改原對照用strs[0]的值，用 .join('') 將陣列改回值後賦值
+                        t = strs[0] = strs[0].join('')
+                        // console.log(strs[0])
+                    }
                 }
             }
-            console.log(t)
+            // console.log(t)
             return t
 
 
